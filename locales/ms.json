@@ -1,4 +1,24 @@
 {
-  "title": "Penyesuaian Vanila",
-  "description": "Modul klien LifeForge untuk Vanilla Tweaks, koleksi peningkatan Minecraft."
+  "title": "Vanilla Tweaks",
+  "description": "Modul Klien LifeForge untuk melayari dan memuat turun pek daripada laman VT.",
+  "items": {
+    "resourcePacks": "Pek Sumber",
+    "dataPacks": "Pek Data",
+    "craftingTweaks": "Pengubahsuaian Kraf"
+  },
+  "subsections": {
+    "resourcePacks": "Pek Sumber",
+    "dataPacks": "Pek Data",
+    "craftingTweaks": "Pengubahsuaian Kraf"
+  },
+  "sidebar": {
+    "allResourcePacks": "Semua Pek Sumber",
+    "allDataPacks": "Semua Pek Data",
+    "allCraftingTweaks": "Semua Pengubahsuaian Kraf",
+    "filteredResourcePacks": "Pek Sumber Ditapis",
+    "filteredDataPacks": "Pek Data Ditapis",
+    "filteredCraftingTweaks": "Pengubahsuaian Kraf Ditapis",
+    "favourites": "Kegemaran",
+    "categories": "Kategori"
+  }
 }

@@ -1,4 +1,24 @@
 {
-  "title": "香草調整",
-  "description": "LifeForge客戶端模塊，用於Vanilla Tweaks，一個Minecraft增強集合。"
+  "title": "Vanilla Tweaks",
+  "description": "用於瀏覽並下載 VT 官網各類套件的專用客戶端模組",
+  "items": {
+    "resourcePacks": "資源包",
+    "dataPacks": "數據包",
+    "craftingTweaks": "合成調整"
+  },
+  "subsections": {
+    "resourcePacks": "資源包",
+    "dataPacks": "數據包",
+    "craftingTweaks": "合成調整"
+  },
+  "sidebar": {
+    "allResourcePacks": "所有資源包",
+    "allDataPacks": "所有數據包",
+    "allCraftingTweaks": "所有合成調整",
+    "filteredResourcePacks": "已篩選資源包",
+    "filteredDataPacks": "已篩選數據包",
+    "filteredCraftingTweaks": "已篩選合成調整",
+    "favourites": "收藏夾",
+    "categories": "類別"
+  }
 }

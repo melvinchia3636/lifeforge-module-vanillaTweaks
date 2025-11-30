@@ -1,4 +1,24 @@
 {
-  "title": "香草调整",
-  "description": "LifeForge客户端模块，用于Vanilla Tweaks，一个Minecraft增强集合。"
+  "title": "Vanilla Tweaks",
+  "description": "用于浏览并下载 VT 官网各类包的LifeForge客户端模块",
+  "items": {
+    "resourcePacks": "资源包",
+    "dataPacks": "数据包",
+    "craftingTweaks": "合成调整"
+  },
+  "subsections": {
+    "resourcePacks": "资源包",
+    "dataPacks": "数据包",
+    "craftingTweaks": "合成调整"
+  },
+  "sidebar": {
+    "allResourcePacks": "所有资源包",
+    "allDataPacks": "所有数据包",
+    "allCraftingTweaks": "所有合成调整",
+    "filteredResourcePacks": "已筛选资源包",
+    "filteredDataPacks": "已筛选数据包",
+    "filteredCraftingTweaks": "已筛选合成调整",
+    "favourites": "收藏夹",
+    "categories": "类别"
+  }
 }

@@ -1,4 +1,24 @@
 {
   "title": "Vanilla Tweaks",
-  "description": "A LifeForge client module for Vanilla Tweaks, the collection of Minecraft enhancements"
+  "description": "A LifeForge client module for browsing and downloading packs from the VT website",
+  "items": {
+    "resourcePacks": "Resource Packs",
+    "dataPacks": "Data Packs",
+    "craftingTweaks": "Crafting Tweaks"
+  },
+  "subsections": {
+    "resourcePacks": "Resource Packs",
+    "dataPacks": "Data Packs",
+    "craftingTweaks": "Crafting Tweaks"
+  },
+  "sidebar": {
+    "allResourcePacks": "All Resource Packs",
+    "allDataPacks": "All Data Packs",
+    "allCraftingTweaks": "All Crafting Tweaks",
+    "filteredResourcePacks": "Filtered Resource Packs",
+    "filteredDataPacks": "Filtered Data Packs",
+    "filteredCraftingTweaks": "Filtered Crafting Tweaks",
+    "favourites": "Favourites",
+    "categories": "Categories"
+  }
 }
