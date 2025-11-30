@@ -19,7 +19,9 @@ function PackItem({ entry }: { entry: Pack }) {
   return (
     <Card
       key={entry.name}
+      isInteractive
       className="mb-3 h-full min-w-0 flex-1 overflow-hidden p-0!"
+      onClick={() => {}}
     >
       {type !== 'dp' && (
         <img

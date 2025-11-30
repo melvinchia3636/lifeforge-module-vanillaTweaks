@@ -3,12 +3,12 @@ import forgeAPI from '@/utils/forgeAPI'
 import { Icon } from '@iconify/react'
 import { useQuery } from '@tanstack/react-query'
 import {
+  Button,
   ContentWrapperWithSidebar,
   LayoutWithSidebar,
   Listbox,
   ListboxOption,
   ModuleHeader,
-  Scrollbar,
   SearchInput,
   VirtualGrid,
   WithQuery
@@ -117,7 +117,33 @@ function EntryList() {
 
   return (
     <>
-      <ModuleHeader />
+      <ModuleHeader
+        actionButton={<Button icon="tabler:shopping-bag" variant="plain" />}
+        tips={{
+          title: 'Disclaimer',
+          content: (
+            <>
+              <p>
+                LifeForge is not affiliated with Vanilla Tweaks. The packs
+                listed here are fetched from the official Vanilla Tweaks API for
+                your convenience.
+              </p>
+              <p className="mt-2">
+                Please support the original creator by visiting the{' '}
+                <a
+                  className="text-custom-500 underline"
+                  href="https://vanillatweaks.net/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Vanilla Tweaks website
+                </a>
+                .
+              </p>
+            </>
+          )
+        }}
+      />
       <LayoutWithSidebar>
         <Sidebar entriesQuery={entriesQuery} />
         <ContentWrapperWithSidebar>
@@ -169,7 +195,7 @@ function EntryList() {
               onChange={q => updateFilter(prev => ({ ...prev, q }))}
             />
           </div>
-          <Scrollbar>
+          <div className="flex-1">
             <WithQuery query={entriesQuery}>
               {() => (
                 <VirtualGrid
@@ -181,7 +207,7 @@ function EntryList() {
                 />
               )}
             </WithQuery>
-          </Scrollbar>
+          </div>
         </ContentWrapperWithSidebar>
       </LayoutWithSidebar>
     </>
