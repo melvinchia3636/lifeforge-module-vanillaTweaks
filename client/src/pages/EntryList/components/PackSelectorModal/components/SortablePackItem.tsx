@@ -3,7 +3,7 @@ import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import { Icon } from '@iconify/react'
 import clsx from 'clsx'
-import { Button } from 'lifeforge-ui'
+import { Button, Card } from 'lifeforge-ui'
 
 function SortablePackItem({
   item,
@@ -38,10 +38,10 @@ function SortablePackItem({
   const typeId = RESOURCE_TYPES[type || 'rp'][0].toLowerCase().replace(/ /g, '')
 
   return (
-    <div
+    <Card
       ref={setNodeRef}
       className={clsx(
-        'component-bg-lighter flex items-center gap-3 rounded-lg p-3',
+        'component-bg-lighter flex items-center gap-3',
         isDragging && 'z-50 opacity-80 shadow-lg'
       )}
       style={style}
@@ -80,7 +80,7 @@ function SortablePackItem({
         variant="plain"
         onClick={() => onRemove(item.name)}
       />
-    </div>
+    </Card>
   )
 }
 
