@@ -1,20 +1,21 @@
-import { RESOURCE_TYPES, type Pack } from '@/pages/EntryList'
+import { type Pack, RESOURCE_TYPES } from '@/pages/EntryList'
 import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 import { Icon } from '@iconify/react'
 import clsx from 'clsx'
 import { Button } from 'lifeforge-ui'
-import { CSS } from '@dnd-kit/utilities'
-import { memo } from 'react'
 
-const SortablePackItem = memo(function SortablePackItem({
+function SortablePackItem({
   item,
   type,
   version,
+  incompatibilityColor,
   onRemove
 }: {
   item: Pack
   type: keyof typeof RESOURCE_TYPES
   version: string
+  incompatibilityColor?: string
   onRemove: (name: string) => void
 }) {
   const {
@@ -28,7 +29,10 @@ const SortablePackItem = memo(function SortablePackItem({
 
   const style = {
     transform: CSS.Transform.toString(transform),
-    transition
+    transition,
+    ...(incompatibilityColor && {
+      backgroundColor: incompatibilityColor + '20'
+    })
   }
 
   const typeId = RESOURCE_TYPES[type || 'rp'][0].toLowerCase().replace(/ /g, '')
@@ -63,6 +67,13 @@ const SortablePackItem = memo(function SortablePackItem({
           {item.categoryPath.join(' > ')}
         </p>
       </div>
+      {incompatibilityColor && (
+        <Icon
+          className="size-5 shrink-0"
+          icon="tabler:alert-triangle"
+          style={{ color: incompatibilityColor }}
+        />
+      )}
       <Button
         className="shrink-0 p-2!"
         icon="tabler:x"
@@ -71,6 +82,6 @@ const SortablePackItem = memo(function SortablePackItem({
       />
     </div>
   )
-})
+}
 
 export default SortablePackItem

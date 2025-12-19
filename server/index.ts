@@ -32,4 +32,47 @@ const list = forgeController
     }
   })
 
-export default forgeRouter({ list })
+const TYPE_MAP: Record<string, string> = {
+  rp: 'resourcepacks',
+  dp: 'datapacks',
+  ct: 'craftingtweaks'
+}
+
+const download = forgeController
+  .mutation()
+  .description('Download Vanilla Tweaks pack')
+  .input({
+    body: z.object({
+      version: z.string(),
+      type: z.enum(['rp', 'dp', 'ct']),
+      packs: z.record(z.string(), z.array(z.string()))
+    })
+  })
+  .callback(async ({ body: { version, type, packs } }) => {
+    const typeName = TYPE_MAP[type]
+
+    const formData = new URLSearchParams({
+      packs: JSON.stringify(packs),
+      version
+    })
+
+    const response = await fetch(
+      `https://vanillatweaks.net/assets/server/zip${typeName}.php`,
+      {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
+      }
+    )
+
+    const data: { link: string; status: string } = await response.json()
+
+    return {
+      link: data.link,
+      status: data.status
+    }
+  })
+
+export default forgeRouter({ list, download })
