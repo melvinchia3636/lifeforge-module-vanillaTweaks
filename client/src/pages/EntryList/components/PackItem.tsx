@@ -1,4 +1,5 @@
 import useFilter from '@/hooks/useFilter'
+import { useCart } from '@/providers/CartProvider'
 import { Icon } from '@iconify/react'
 import clsx from 'clsx'
 import { Card } from 'lifeforge-ui'
@@ -14,15 +15,27 @@ function PackItem({ entry }: { entry: Pack }) {
     filter: { version }
   } = useFilter()
 
+  const { cart, toggleInCart } = useCart()
+
+  const inCart = cart.some(item => item.name === entry.name)
+
   const typeId = RESOURCE_TYPES[type || 'rp'][0].toLowerCase().replace(/ /g, '')
 
   return (
     <Card
       key={entry.name}
       isInteractive
-      className="mb-3 h-full min-w-0 flex-1 overflow-hidden p-0!"
-      onClick={() => {}}
+      className={clsx(
+        'mb-3 h-full min-w-0 flex-1 overflow-hidden p-0!',
+        inCart && 'border-custom-500 border-2'
+      )}
+      onClick={() => toggleInCart(entry)}
     >
+      {inCart && (
+        <div className="bg-custom-500 absolute top-2 right-2 z-10 rounded-full p-1">
+          <Icon className="size-4 text-white" icon="tabler:check" />
+        </div>
+      )}
       {type !== 'dp' && (
         <img
           alt=""
@@ -34,8 +47,9 @@ function PackItem({ entry }: { entry: Pack }) {
       <div className="relative min-w-0 p-4 pt-0">
         <div
           className={clsx(
-            'flex-center component-bg-lighter ring-bg-900 size-20 shrink-0 overflow-hidden rounded-md ring-4',
-            type !== 'dp' ? '-mt-10' : 'mt-4'
+            'flex-center component-bg-lighter ring-bg-100 dark:ring-bg-900 size-20 shrink-0 overflow-hidden rounded-md ring-4',
+            type !== 'dp' ? '-mt-10' : 'mt-4',
+            inCart && 'ring-custom-500'
           )}
         >
           <img
@@ -82,6 +96,7 @@ function PackItem({ entry }: { entry: Pack }) {
             href={entry.video}
             rel="noreferrer noopener"
             target="_blank"
+            onClick={e => e.stopPropagation()}
           >
             Watch Preview Video
           </a>

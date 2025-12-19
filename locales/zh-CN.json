@@ -20,5 +20,26 @@
     "filteredCraftingTweaks": "已筛选合成调整",
     "favourites": "收藏夹",
     "categories": "类别"
+  },
+  "modals": {
+    "packSelector": {
+      "title": "{{type}}选择器",
+      "clearAll": "清空全部",
+      "dragHint": "拖动项目可重新排序",
+      "empty": {
+        "cart": {
+          "title": "您的购物车为空",
+          "description": "点击包来添加它们。"
+        }
+      },
+      "clearConfirm": {
+        "title": "清空所有包？",
+        "description": "您确定要从购物车中移除所有包吗？此操作无法撤销。"
+      },
+      "versionChange": {
+        "title": "更换版本？",
+        "description": "更换版本将清空您的购物车。您确定要继续吗？"
+      }
+    }
   }
 }

@@ -20,5 +20,26 @@
     "filteredCraftingTweaks": "已篩選合成調整",
     "favourites": "收藏夾",
     "categories": "類別"
+  },
+  "modals": {
+    "packSelector": {
+      "title": "{{type}}選擇器",
+      "clearAll": "清空全部",
+      "dragHint": "拖曳項目可重新排序",
+      "empty": {
+        "cart": {
+          "title": "您的購物車為空",
+          "description": "點擊套件來加入它們。"
+        }
+      },
+      "clearConfirm": {
+        "title": "清空所有套件？",
+        "description": "您確定要從購物車中移除所有套件嗎？此操作無法撤銷。"
+      },
+      "versionChange": {
+        "title": "更換版本？",
+        "description": "更換版本將清空您的購物車。您確定要繼續嗎？"
+      }
+    }
   }
 }

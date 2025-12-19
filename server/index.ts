@@ -1,5 +1,6 @@
-import { forgeController, forgeRouter } from '@functions/routes'
 import { z } from 'zod'
+
+import { forgeController, forgeRouter } from '@functions/routes'
 
 import { Response } from './types/resource_pack.types'
 

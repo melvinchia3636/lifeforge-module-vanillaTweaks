@@ -20,5 +20,26 @@
     "filteredCraftingTweaks": "Pengubahsuaian Kraf Ditapis",
     "favourites": "Kegemaran",
     "categories": "Kategori"
+  },
+  "modals": {
+    "packSelector": {
+      "title": "Pemilih {{type}}",
+      "clearAll": "Kosongkan Semua",
+      "dragHint": "Seret item untuk menyusun semula",
+      "empty": {
+        "cart": {
+          "title": "Troli anda kosong",
+          "description": "Klik pada pek untuk menambahkannya."
+        }
+      },
+      "clearConfirm": {
+        "title": "Kosongkan Semua Pek?",
+        "description": "Adakah anda pasti mahu membuang semua pek daripada troli anda? Tindakan ini tidak boleh dibatalkan."
+      },
+      "versionChange": {
+        "title": "Tukar Versi?",
+        "description": "Menukar versi akan mengosongkan troli anda. Adakah anda pasti mahu meneruskan?"
+      }
+    }
   }
 }

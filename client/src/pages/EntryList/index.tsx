@@ -1,9 +1,11 @@
 import useFilter from '@/hooks/useFilter'
+import { CartProvider, useCart } from '@/providers/CartProvider'
 import forgeAPI from '@/utils/forgeAPI'
 import { Icon } from '@iconify/react'
 import { useQuery } from '@tanstack/react-query'
 import {
   Button,
+  ConfirmationModal,
   ContentWrapperWithSidebar,
   LayoutWithSidebar,
   Listbox,
@@ -11,15 +13,18 @@ import {
   ModuleHeader,
   SearchInput,
   VirtualGrid,
-  WithQuery
+  WithQuery,
+  useModalStore
 } from 'lifeforge-ui'
 import _ from 'lodash'
-import { useEffect, useMemo } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import { type InferOutput, useParams } from 'shared'
 
 import type { Category } from '../../../../server/types/resource_pack.types'
 import InnerHeader from './components/InnerHeader'
 import PackItem from './components/PackItem'
+import PackSelectorModal from './components/PackSelectorModal'
 import Sidebar from './components/Sidebar'
 
 export type Pack = InferOutput<
@@ -63,10 +68,45 @@ const flattenCategories = (
   return packs
 }
 
-function EntryList() {
+function EntryListContent() {
   const { type } = useParams<{ type: keyof typeof RESOURCE_TYPES }>()
 
+  const open = useModalStore(state => state.open)
+
   const { filter, updateFilter } = useFilter()
+
+  const { cart, cartCount, removeFromCart, clearCart, reorderCart } = useCart()
+
+  const handleOpenPackSelector = useCallback(() => {
+    open(PackSelectorModal, {
+      cart,
+      cartCount,
+      removeFromCart,
+      clearCart,
+      reorderCart
+    })
+  }, [open, cart, cartCount, removeFromCart, clearCart, reorderCart])
+
+  const { t } = useTranslation('apps.vanillaTweaks')
+
+  const handleVersionChange = useCallback(
+    (newVersion: string) => {
+      if (cartCount > 0) {
+        open(ConfirmationModal, {
+          title: t('modals.packSelector.versionChange.title'),
+          description: t('modals.packSelector.versionChange.description'),
+          confirmationButton: 'confirm',
+          onConfirm: async () => {
+            updateFilter(() => ({ version: newVersion, category: '', q: '' }))
+            clearCart()
+          }
+        })
+      } else {
+        updateFilter(() => ({ version: newVersion, category: '', q: '' }))
+      }
+    },
+    [cartCount, open, t, updateFilter, clearCart]
+  )
 
   const entriesQuery = useQuery(
     forgeAPI.vanillaTweaks.list
@@ -118,7 +158,15 @@ function EntryList() {
   return (
     <>
       <ModuleHeader
-        actionButton={<Button icon="tabler:shopping-bag" variant="plain" />}
+        actionButton={
+          <Button
+            icon="tabler:shopping-bag"
+            variant="plain"
+            onClick={handleOpenPackSelector}
+          >
+            {cartCount > 0 && <span className="text-sm">({cartCount})</span>}
+          </Button>
+        }
         tips={{
           title: 'Disclaimer',
           content: (
@@ -164,9 +212,7 @@ function EntryList() {
                 }
                 className="max-w-40"
                 value={filter.version}
-                onChange={version => {
-                  updateFilter(() => ({ version, category: '', q: '' }))
-                }}
+                onChange={handleVersionChange}
               >
                 {Array(
                   entriesQuery.data.versions[1] -
@@ -211,6 +257,14 @@ function EntryList() {
         </ContentWrapperWithSidebar>
       </LayoutWithSidebar>
     </>
+  )
+}
+
+function EntryList() {
+  return (
+    <CartProvider>
+      <EntryListContent />
+    </CartProvider>
   )
 }
 

@@ -20,5 +20,26 @@
     "filteredCraftingTweaks": "Filtered Crafting Tweaks",
     "favourites": "Favourites",
     "categories": "Categories"
+  },
+  "modals": {
+    "packSelector": {
+      "title": "{{type}} Selector",
+      "clearAll": "Clear All",
+      "dragHint": "Drag items to reorder",
+      "empty": {
+        "cart": {
+          "title": "Your cart is empty",
+          "description": "Click on packs to add them"
+        }
+      },
+      "clearConfirm": {
+        "title": "Clear All Packs?",
+        "description": "Are you sure you want to remove all packs from your cart? This action cannot be undone."
+      },
+      "versionChange": {
+        "title": "Change Version?",
+        "description": "Changing the version will clear your cart. Are you sure you want to continue?"
+      }
+    }
   }
 }
