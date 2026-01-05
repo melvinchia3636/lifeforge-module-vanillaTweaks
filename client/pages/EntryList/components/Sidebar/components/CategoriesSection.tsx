@@ -1,18 +1,24 @@
-import useFilter from '@/hooks/useFilter'
-import type forgeAPI from '@/utils/forgeAPI'
 import { SidebarItem, SidebarTitle } from 'lifeforge-ui'
 import type { InferOutput } from 'shared'
+
+import useFilter from '@/hooks/useFilter'
+import type forgeAPI from '@/utils/forgeAPI'
 
 function CategoriesSection({
   categories
 }: {
-  categories: InferOutput<typeof forgeAPI.vanillaTweaks.list>['categories']
+  categories: InferOutput<
+    typeof forgeAPI.melvinchia3636$vanillaTweaks.list
+  >['categories']
 }) {
   const { filter, updateFilter } = useFilter()
 
   return (
     <>
-      <SidebarTitle label="Categories" namespace="apps.vanillaTweaks" />
+      <SidebarTitle
+        label="Categories"
+        namespace="apps.melvinchia3636$vanillaTweaks"
+      />
       {categories.map(category => (
         <SidebarItem
           key={category.category}

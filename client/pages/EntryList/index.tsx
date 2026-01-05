@@ -1,6 +1,3 @@
-import useFilter from '@/hooks/useFilter'
-import { CartProvider, useCart } from '@/providers/CartProvider'
-import forgeAPI from '@/utils/forgeAPI'
 import { Icon } from '@iconify/react'
 import { useQuery } from '@tanstack/react-query'
 import {
@@ -21,14 +18,17 @@ import { useCallback, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { type InferOutput, useParams } from 'shared'
 
-import type { Category } from '../../../../server/types/resource_pack.types'
+import useFilter from '@/hooks/useFilter'
+import { CartProvider, useCart } from '@/providers/CartProvider'
+import forgeAPI from '@/utils/forgeAPI'
+
 import InnerHeader from './components/InnerHeader'
 import PackItem from './components/PackItem'
 import PackSelectorModal from './components/PackSelectorModal'
 import Sidebar from './components/Sidebar'
 
 export type Pack = InferOutput<
-  typeof forgeAPI.vanillaTweaks.list
+  typeof forgeAPI.melvinchia3636$vanillaTweaks.list
 >['categories'][number]['packs'][number] & {
   categoryPath: string[]
 }
@@ -40,7 +40,9 @@ export const RESOURCE_TYPES = {
 }
 
 const flattenCategories = (
-  categories: Category[],
+  categories: InferOutput<
+    typeof forgeAPI.melvinchia3636$vanillaTweaks.list
+  >['categories'],
   categoryPath: string[]
 ): (Pack & {
   categoryPath: string[]
@@ -87,7 +89,7 @@ function EntryListContent() {
     })
   }, [open, cart, cartCount, removeFromCart, clearCart, reorderCart])
 
-  const { t } = useTranslation('apps.vanillaTweaks')
+  const { t } = useTranslation('apps.melvinchia3636$vanillaTweaks')
 
   const handleVersionChange = useCallback(
     (newVersion: string) => {
@@ -109,7 +111,7 @@ function EntryListContent() {
   )
 
   const entriesQuery = useQuery(
-    forgeAPI.vanillaTweaks.list
+    forgeAPI.melvinchia3636$vanillaTweaks.list
       .input({
         version: filter.version,
         type: type || 'rp'
@@ -235,7 +237,7 @@ function EntryListContent() {
               </Listbox>
             )}
             <SearchInput
-              namespace="apps.vanillaTweaks"
+              namespace="apps.melvinchia3636$vanillaTweaks"
               searchTarget={_.camelCase(RESOURCE_TYPES[type || 'rp'][0])}
               value={filter.q}
               onChange={q => updateFilter(prev => ({ ...prev, q }))}

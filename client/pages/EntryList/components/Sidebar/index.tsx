@@ -1,5 +1,3 @@
-import useFilter from '@/hooks/useFilter'
-import type forgeAPI from '@/utils/forgeAPI'
 import type { UseQueryResult } from '@tanstack/react-query'
 import {
   SidebarDivider,
@@ -9,13 +7,18 @@ import {
 } from 'lifeforge-ui'
 import { type InferOutput, useParams } from 'shared'
 
+import useFilter from '@/hooks/useFilter'
+import type forgeAPI from '@/utils/forgeAPI'
+
 import { RESOURCE_TYPES } from '../..'
 import CategoriesSection from './components/CategoriesSection'
 
 function Sidebar({
   entriesQuery
 }: {
-  entriesQuery: UseQueryResult<InferOutput<typeof forgeAPI.vanillaTweaks.list>>
+  entriesQuery: UseQueryResult<
+    InferOutput<typeof forgeAPI.melvinchia3636$vanillaTweaks.list>
+  >
 }) {
   const { type } = useParams<{ type: keyof typeof RESOURCE_TYPES }>()
 
@@ -30,7 +33,7 @@ function Sidebar({
               active={!filter.category}
               icon="tabler:list"
               label={`All ${RESOURCE_TYPES[type || 'rp'][0]}`}
-              namespace="apps.vanillaTweaks"
+              namespace="apps.melvinchia3636$vanillaTweaks"
               onClick={() => {
                 updateFilter({ category: '' })
               }}
@@ -38,7 +41,7 @@ function Sidebar({
             <SidebarItem
               icon="tabler:heart"
               label="Favourites"
-              namespace="apps.vanillaTweaks"
+              namespace="apps.melvinchia3636$vanillaTweaks"
             />
             <SidebarDivider />
             <CategoriesSection categories={data.categories} />

@@ -1,9 +1,10 @@
-import useFilter from '@/hooks/useFilter'
 import { Icon } from '@iconify/react'
 import { Button, TagsFilter, useModuleSidebarState } from 'lifeforge-ui'
 import _ from 'lodash'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'shared'
+
+import useFilter from '@/hooks/useFilter'
 
 import { type Pack, RESOURCE_TYPES } from '..'
 
@@ -12,7 +13,7 @@ function InnerHeader({
 }: {
   filteredAndFlattenedEntries: Pack[]
 }) {
-  const { t } = useTranslation('apps.vanillaTweaks')
+  const { t } = useTranslation('apps.melvinchia3636$vanillaTweaks')
 
   const { type } = useParams<{ type: keyof typeof RESOURCE_TYPES }>()
 

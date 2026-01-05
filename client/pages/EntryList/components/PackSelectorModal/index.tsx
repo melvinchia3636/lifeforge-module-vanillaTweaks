@@ -1,6 +1,3 @@
-import useFilter from '@/hooks/useFilter'
-import { type Pack, RESOURCE_TYPES } from '@/pages/EntryList'
-import forgeAPI from '@/utils/forgeAPI'
 import {
   DndContext,
   type DragEndEvent,
@@ -30,6 +27,10 @@ import { useTranslation } from 'react-i18next'
 import { AutoSizer } from 'react-virtualized'
 import { useParams, usePromiseLoading } from 'shared'
 
+import useFilter from '@/hooks/useFilter'
+import { type Pack, RESOURCE_TYPES } from '@/pages/EntryList'
+import forgeAPI from '@/utils/forgeAPI'
+
 import SortablePackItem from './components/SortablePackItem'
 
 interface PackSelectorModalProps {
@@ -44,7 +45,7 @@ interface PackSelectorModalProps {
 }
 
 function PackSelectorModal({ data, onClose }: PackSelectorModalProps) {
-  const { t } = useTranslation('apps.vanillaTweaks')
+  const { t } = useTranslation('apps.melvinchia3636$vanillaTweaks')
 
   const { type } = useParams<{ type: keyof typeof RESOURCE_TYPES }>()
 
@@ -221,11 +222,12 @@ function PackSelectorModal({ data, onClose }: PackSelectorModalProps) {
       packsByCategory[categoryKey].push(item.name)
     }
 
-    const response = await forgeAPI.vanillaTweaks.download.mutate({
-      version,
-      type: currentType,
-      packs: packsByCategory
-    })
+    const response =
+      await forgeAPI.melvinchia3636$vanillaTweaks.download.mutate({
+        version,
+        type: currentType,
+        packs: packsByCategory
+      })
 
     if (response.link) {
       // Trigger download
@@ -258,7 +260,7 @@ function PackSelectorModal({ data, onClose }: PackSelectorModalProps) {
             : undefined
         }
         icon={RESOURCE_TYPES[currentType][1]}
-        namespace="apps.vanillaTweaks"
+        namespace="apps.melvinchia3636$vanillaTweaks"
         title={
           <span className="flex min-w-0 items-baseline gap-2">
             <span className="min-w-0 truncate">
@@ -317,7 +319,7 @@ function PackSelectorModal({ data, onClose }: PackSelectorModalProps) {
             icon="tabler:shopping-cart-off"
             message={{
               id: 'cart',
-              namespace: 'apps.vanillaTweaks',
+              namespace: 'apps.melvinchia3636$vanillaTweaks',
               tKey: 'modals.packSelector'
             }}
           />

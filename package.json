@@ -1,7 +1,13 @@
 {
-  "name": "vanilla-tweaks",
-  "version": "0.0.0",
+  "name": "@lifeforge/melvinchia3636--vanilla-tweaks",
+  "displayName": "Vanilla Tweaks",
+  "version": "0.0.1",
   "description": "A LifeForge client module for Vanilla Tweaks, the collection of Minecraft enhancements",
+  "author": "melvinchia3636 <melvinchia623600@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/melvinchia3636/lifeforge-module-vanillaTweaks.git"
+  },
   "scripts": {
     "types": "cd client && bun tsc"
   },
@@ -18,13 +24,27 @@
     "react": "^19.2.0",
     "react-i18next": "^15.1.1",
     "react-toastify": "^11.0.5",
+    "react-virtualized": "^9.22.6",
     "shared": "workspace:*",
+    "tailwindcss": "^4.1.18",
     "vite": "^7.1.9",
     "zod": "^4.1.12"
   },
   "devDependencies": {
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "@types/react-virtualized": "^9.22.3",
     "vite": "^7.1.9"
+  },
+  "exports": {
+    "./server": "./server/index.ts",
+    "./manifest": {
+      "types": "./manifest.d.ts",
+      "default": "./manifest.ts"
+    }
+  },
+  "lifeforge": {
+    "icon": "tabler:brush",
+    "category": "Games"
   }
 }
