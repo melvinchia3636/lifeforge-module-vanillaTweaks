@@ -49,7 +49,7 @@ function PackSelectorModal({ data, onClose }: PackSelectorModalProps) {
 
   const { type } = useParams<{ type: keyof typeof RESOURCE_TYPES }>()
 
-  const open = useModalStore(state => state.open)
+  const { open } = useModalStore()
 
   const currentType = type || 'rp'
 

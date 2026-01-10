@@ -22,6 +22,7 @@ import useFilter from '@/hooks/useFilter'
 import { CartProvider, useCart } from '@/providers/CartProvider'
 import forgeAPI from '@/utils/forgeAPI'
 
+import '../../index.css'
 import InnerHeader from './components/InnerHeader'
 import PackItem from './components/PackItem'
 import PackSelectorModal from './components/PackSelectorModal'
@@ -73,7 +74,7 @@ const flattenCategories = (
 function EntryListContent() {
   const { type } = useParams<{ type: keyof typeof RESOURCE_TYPES }>()
 
-  const open = useModalStore(state => state.open)
+  const { open } = useModalStore()
 
   const { filter, updateFilter } = useFilter()
 
