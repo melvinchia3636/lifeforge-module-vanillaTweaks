@@ -7,9 +7,7 @@ import type forgeAPI from '@/utils/forgeAPI'
 function CategoriesSection({
   categories
 }: {
-  categories: InferOutput<
-    typeof forgeAPI.melvinchia3636$vanillaTweaks.list
-  >['categories']
+  categories: InferOutput<typeof forgeAPI.list>['categories']
 }) {
   const { filter, updateFilter } = useFilter()
 

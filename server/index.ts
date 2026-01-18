@@ -1,8 +1,9 @@
+import { createForge, forgeRouter } from '@lifeforge/server-utils'
 import { z } from 'zod'
 
-import { forgeController, forgeRouter } from '@functions/routes'
+import type { Response } from './types/resource_pack.types'
 
-import { Response } from './types/resource_pack.types'
+const forge = createForge({})
 
 const VERSIONS = {
   rp: [11, 21],
@@ -10,7 +11,7 @@ const VERSIONS = {
   ct: [13, 21]
 }
 
-const list = forgeController
+const list = forge
   .query()
   .description('List Vanilla Tweaks entries')
   .input({
@@ -38,7 +39,7 @@ const TYPE_MAP: Record<string, string> = {
   ct: 'craftingtweaks'
 }
 
-const download = forgeController
+const download = forge
   .mutation()
   .description('Download Vanilla Tweaks pack')
   .input({

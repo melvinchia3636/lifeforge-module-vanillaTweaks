@@ -222,12 +222,11 @@ function PackSelectorModal({ data, onClose }: PackSelectorModalProps) {
       packsByCategory[categoryKey].push(item.name)
     }
 
-    const response =
-      await forgeAPI.melvinchia3636$vanillaTweaks.download.mutate({
-        version,
-        type: currentType,
-        packs: packsByCategory
-      })
+    const response = await forgeAPI.download.mutate({
+      version,
+      type: currentType,
+      packs: packsByCategory
+    })
 
     if (response.link) {
       // Trigger download

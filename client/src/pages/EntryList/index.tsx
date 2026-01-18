@@ -29,7 +29,7 @@ import PackSelectorModal from './components/PackSelectorModal'
 import Sidebar from './components/Sidebar'
 
 export type Pack = InferOutput<
-  typeof forgeAPI.melvinchia3636$vanillaTweaks.list
+  typeof forgeAPI.list
 >['categories'][number]['packs'][number] & {
   categoryPath: string[]
 }
@@ -41,9 +41,7 @@ export const RESOURCE_TYPES = {
 }
 
 const flattenCategories = (
-  categories: InferOutput<
-    typeof forgeAPI.melvinchia3636$vanillaTweaks.list
-  >['categories'],
+  categories: InferOutput<typeof forgeAPI.list>['categories'],
   categoryPath: string[]
 ): (Pack & {
   categoryPath: string[]
@@ -112,7 +110,7 @@ function EntryListContent() {
   )
 
   const entriesQuery = useQuery(
-    forgeAPI.melvinchia3636$vanillaTweaks.list
+    forgeAPI.list
       .input({
         version: filter.version,
         type: type || 'rp'

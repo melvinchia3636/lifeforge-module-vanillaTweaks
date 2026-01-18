@@ -16,9 +16,7 @@ import CategoriesSection from './components/CategoriesSection'
 function Sidebar({
   entriesQuery
 }: {
-  entriesQuery: UseQueryResult<
-    InferOutput<typeof forgeAPI.melvinchia3636$vanillaTweaks.list>
-  >
+  entriesQuery: UseQueryResult<InferOutput<typeof forgeAPI.list>>
 }) {
   const { type } = useParams<{ type: keyof typeof RESOURCE_TYPES }>()
 
